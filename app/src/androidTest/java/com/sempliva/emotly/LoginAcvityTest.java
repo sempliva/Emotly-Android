@@ -25,14 +25,17 @@ import static org.hamcrest.Matchers.not;
 @RunWith(AndroidJUnit4.class)
 public class LoginAcvityTest {
 
-    @Rule public final ActivityTestRule<LoginActivity> main = new ActivityTestRule<>(LoginActivity.class);
+    @Rule
+    public final ActivityTestRule<LoginActivity> main = new ActivityTestRule<>(LoginActivity.class);
 
-    @Test public void activityStarted(){
+    @Test
+    public void activityStarted() {
         //check the activity is started and the login button is displayed
         onView(withId(R.id.bt_login)).check(matches(isDisplayed()));
     }
 
-    @Test public void loginNoData(){
+    @Test
+    public void loginNoData() {
         //click on login button
         onView(withId(R.id.bt_login)).perform(click());
         //check toast message is displayed
