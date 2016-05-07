@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TOAST_INSERT_DATA">Please insert username and password</string>
+    <string name="TOAST_LOGIN_SUCCESS">Login successful</string>
+    <string name="TOAST_LOGIN_ERROR">Login error:</string>
+    <string name="TOAST_NETWORK_ERROR">Network error</string>
+</resources>
