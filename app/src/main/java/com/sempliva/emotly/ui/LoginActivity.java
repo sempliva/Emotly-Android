@@ -1,3 +1,23 @@
+/*
+ MIT License
+ Copyright (c) 2016 Emotly Contributors
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+*/
+
 package com.sempliva.emotly.ui;
 
 import android.content.SharedPreferences;
@@ -21,6 +41,11 @@ import com.sempliva.emotly.rest.ServerAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+/**
+ * Created by ggc on 07/05/16.
+ * Copyright © 2016 com.sempliva. All rights reserved.
+ */
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Callback<JWT> {
 
@@ -76,14 +101,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
-        //make API call
-        if((tvUserID.getText().length()==0)||(tvPassword.getText().length()==0)){
+        //make API call.
+        if((tvUserID.getText().length()==0) || (tvPassword.getText().length()==0)){
+            //if one of the text views are empty display an error.
             Toast.makeText(this, getResources().getString(R.string.TOAST_INSERT_DATA), Toast.LENGTH_SHORT).show();
+            return;
         }
         ServerAPI.getInstance().login(tvUserID.getText().toString(),
                 tvPassword.getText().toString(), this);
     }
 
+    // on server response.
     @Override
     public void onResponse(Call<JWT> call, Response<JWT> response) {
         if(response.body() != null){
